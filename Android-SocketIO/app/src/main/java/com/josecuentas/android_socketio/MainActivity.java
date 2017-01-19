@@ -32,13 +32,15 @@ public class MainActivity extends AppCompatActivity {
         mTviMessage = (TextView) findViewById(R.id.tviMessage);
         mEteMessage = (EditText) findViewById(R.id.eteMessage);
         mSviContainer = (ScrollView) findViewById(R.id.sviContainer);
+
         findViewById(R.id.butSend).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 String message = mEteMessage.getText().toString();
                 mSocket.emit("chat message", message);
                 mEteMessage.setText("");
                 //ScrollView position bottom end
-                mSviContainer.scrollTo(0, mSviContainer.getBottom());
+                mSviContainer.fullScroll(View.FOCUS_DOWN);
+
             }
         });
     }
